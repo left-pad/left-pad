@@ -1,0 +1,25 @@
+{
+  "name": "left-pad",
+  "version": "0.0.0",
+  "description": "String left pad",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "devDependencies": {
+    "tape": "*"
+  },
+  "keywords": [
+    "leftpad",
+    "left",
+    "pad",
+    "padding",
+    "string"
+  ],
+  "repository": {
+    "url": "git@github.com:azer\/left-pad.git",
+    "type": "git"
+  },
+  "author": "azer",
+  "license": "BSD"
+}
