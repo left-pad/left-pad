@@ -1,6 +1,6 @@
 {
   "name": "left-pad",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "String left pad",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "string"
   ],
   "repository": {
-    "url": "git@github.com:azer\/left-pad.git",
+    "url": "git@github.com:azer/left-pad.git",
     "type": "git"
   },
   "author": "azer",
