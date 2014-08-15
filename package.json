@@ -1,6 +1,6 @@
 {
   "name": "left-pad",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "String left pad",
   "main": "index.js",
   "scripts": {
