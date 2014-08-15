@@ -6,6 +6,8 @@ function leftpad (str, len, ch) {
   ch || (ch = ' ');
   len = len - str.length;
 
+  str = String(str);
+
   while (++i < len) {
     str = ch + str;
   }
