@@ -17,9 +17,12 @@
     "string"
   ],
   "repository": {
-    "url": "git@github.com:azer/left-pad.git",
+    "url": "git@github.com:camwest/left-pad.git",
     "type": "git"
   },
   "author": "azer",
+  "maintainers": [
+    {"name": "Cameron Westland", "email": "camwest@gmail.com"}
+  ],
   "license": "WTFPL"
 }
