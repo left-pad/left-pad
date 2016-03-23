@@ -4,9 +4,12 @@
   "description": "String left pad",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "bench": "node perf/perf.js"
   },
   "devDependencies": {
+    "benchmark": "^2.1.0",
+    "microtime": "^2.0.0",
     "tape": "*"
   },
   "keywords": [
