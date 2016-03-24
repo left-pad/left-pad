@@ -8,7 +8,7 @@ function leftpad (str, len, ch) {
   if (len < 1) return str;
   
   var arr = new Array(len+1);
-  for(var i=0;i<arr.length;i++)
+  for(var i=0; i<arr.length; i++)
     arr[i] = (i == arr.length - 1) ? str : ch;
     
   return arr.join('');
