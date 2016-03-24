@@ -6,6 +6,7 @@ function leftpad (str, len, ch) {
   if (!ch && ch !== 0) ch = ' ';
 
   len = len - str.length;
+  if (len <=0) return str;
 
   pad_str = '';
   while (true) {
