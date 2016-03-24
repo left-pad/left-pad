@@ -9,7 +9,7 @@ function leftpad (str, len, ch) {
   if (len <= 0) return str;
 
   ch = ch + '';
-  pad = '';
+  var pad = '';
   while (true) {
     if (len & 1) pad += ch;
     len >>= 1;
