@@ -2,16 +2,11 @@ module.exports = leftpad;
 
 function leftpad (str, len, ch) {
   str = String(str);
-
-  var i = -1;
-
+  len = len - str.length;
+  if (len < 1) return str;
   if (!ch && ch !== 0) ch = ' ';
 
-  len = len - str.length;
-
-  while (++i < len) {
-    str = ch + str;
-  }
-
-  return str;
+  var arr = new Array(len+1);
+  arr[arr.length - 1] = str;
+  return arr.join(ch);
 }
