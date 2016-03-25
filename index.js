@@ -48,9 +48,9 @@ function leftpad(str, len, ch){
   str = '' + str;
   ch = ('' + ch) || ' ';
   var padlen = len - str.length;
-  if(padlen <= 0){ 
+  if(padlen <= 0) { 
     return str;
-  }else{
+  } else {
     return ch.repeat(padlen) + str;
   }
 }
