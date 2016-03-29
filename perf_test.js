@@ -46,8 +46,29 @@ function leftpad_bit_ops(str, len, ch) {
 }
 
 
+var Benchmark = require('benchmark');
 
+var t_str = "abcd"
+var t_len = 100;
 
+var suite01 = new Benchmark.Suite;
+suite01.add('Long: Original',        function() {    leftpad_orginal(t_str, t_len, ' ');})
+     .add('Long: ES6 Repeat',      function() { leftpad_es6_repeat(t_str, t_len, ' ');})
+     .add('Long: Bit Operation',   function() {    leftpad_bit_ops(t_str, t_len, ' ');})
+     .on('cycle', function(event) { console.log(String(event.target)); })
+     .on('complete', function() { console.log('Fastest is ' + this.filter('fastest').map('name')); })
+     .run();
+
+t_len=10;
+var suite02 = new Benchmark.Suite;
+suite02.add('Normal: Original',      function() {    leftpad_orginal(t_str, t_len, ' ');})
+     .add('Normal: ES6 Repeat',    function() { leftpad_es6_repeat(t_str, t_len, ' ');})
+     .add('Normal: Bit Operation', function() {    leftpad_bit_ops(t_str, t_len, ' ');})
+     .on('cycle', function(event) { console.log(String(event.target)); })
+     .on('complete', function() { console.log('Fastest is ' + this.filter('fastest').map('name')); })
+     .run();
+
+/*
 function test(fn, str, len, times) {
   var expected = " ".repeat(len-str.length) + str;
   len = expected.length;
@@ -88,5 +109,4 @@ for(var round=0; round<5; round++) {
   test(leftpad_bit_ops, str, len, times);
   console.log("\n");
 }
-
-
+*/

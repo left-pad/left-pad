@@ -21,5 +21,8 @@
     "type": "git"
   },
   "author": "azer",
-  "license": "WTFPL"
+  "license": "WTFPL",
+  "dependencies": {
+    "benchmark": "^2.1.0"
+  }
 }
