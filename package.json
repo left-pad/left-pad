@@ -4,9 +4,11 @@
   "description": "String left pad",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "bench": "node perf_test.js"
   },
   "devDependencies": {
+    "benchmark": "^2.1.0",
     "tape": "*"
   },
   "keywords": [
@@ -21,8 +23,5 @@
     "type": "git"
   },
   "author": "azer",
-  "license": "WTFPL",
-  "dependencies": {
-    "benchmark": "^2.1.0"
-  }
+  "license": "WTFPL"
 }
