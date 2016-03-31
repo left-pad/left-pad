@@ -1,14 +1,11 @@
 module.exports = leftpad;
 
 function leftpad (str, len, ch) {
-  //convert the `str` to String
   str = str +''; 
 
-  //needn't to pad
   len = len - str.length;
   if (len <= 0) return str;
 
-  //convert the `ch` to String
   if (!ch && ch !== 0) ch = ' ';
   ch = ch + ''; 
 
