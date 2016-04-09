@@ -2,6 +2,8 @@
 
 String left pad.
 
+<a href="https://travis-ci.org/camwest/left-pad"><img alt="Travis Status" src="https://travis-ci.org/camwest/left-pad.svg?branch=master&label=travis&style=flat"></a>
+
 ## Install
 
 ```bash
