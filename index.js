@@ -1,5 +1,18 @@
 module.exports = leftpad;
 
+var cache = [
+  '',
+  ' ',
+  '  ',
+  '   ',
+  '    ',
+  '     ',
+  '      ',
+  '       ',
+  '        ',
+  '         '
+];
+
 function leftpad (str, len, ch) {
   //convert the `str` to String
   str = str +''; 
@@ -11,7 +24,7 @@ function leftpad (str, len, ch) {
   //convert the `ch` to String
   if (!ch && ch !== 0) ch = ' ';
   ch = ch + ''; 
-
+  if(ch === ' ' && len < 10) return cache[len] + str;
   var pad = '';
   while (true) {
     if (len & 1) pad += ch;
