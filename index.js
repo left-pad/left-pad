@@ -15,7 +15,7 @@ var cache = [
 
 function leftpad (str, len, ch) {
   //convert the `str` to String
-  str = str +''; 
+  str = str +'';
 
   //needn't to pad
   len = len - str.length;
@@ -23,7 +23,7 @@ function leftpad (str, len, ch) {
 
   //convert the `ch` to String
   if (!ch && ch !== 0) ch = ' ';
-  ch = ch + ''; 
+  ch = ch + '';
   if(ch === ' ' && len < 10) return cache[len] + str;
   var pad = '';
   while (true) {
