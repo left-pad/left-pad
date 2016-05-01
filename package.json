@@ -20,7 +20,7 @@
     "string"
   ],
   "repository": {
-    "url": "git@github.com:camwest/left-pad.git",
+    "url": "git@github.com:stevemao/left-pad.git",
     "type": "git"
   },
   "author": "azer",

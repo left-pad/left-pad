@@ -4,7 +4,7 @@ String left pad
 
 We are now using O(log(n)) algorithm.
 
-<a href="https://travis-ci.org/camwest/left-pad"><img alt="Travis Status" src="https://travis-ci.org/camwest/left-pad.svg?branch=master&label=travis&style=flat"></a>
+[![Build Status][travis-image]][travis-url]
 
 ## Install
 
@@ -26,3 +26,6 @@ leftpad('foobar', 6)
 leftpad(1, 2, 0)
 // => "01"
 ```
+
+[travis-image]: https://travis-ci.org/stevemao/left-pad.svg?branch=master
+[travis-url]: https://travis-ci.org/stevemao/left-pad
