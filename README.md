@@ -15,15 +15,15 @@ $ npm install left-pad
 ## Usage
 
 ```js
-leftpad = require('left-pad')
+leftPad = require('left-pad')
 
-leftpad('foo', 5)
+leftPad('foo', 5)
 // => "  foo"
 
-leftpad('foobar', 6)
+leftPad('foobar', 6)
 // => "foobar"
 
-leftpad(1, 2, 0)
+leftPad(1, 2, 0)
 // => "01"
 ```
 

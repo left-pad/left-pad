@@ -1,4 +1,5 @@
-module.exports = leftpad;
+'use strict';
+module.exports = leftPad;
 
 var cache = [
   '',
@@ -13,15 +14,15 @@ var cache = [
   '         '
 ];
 
-function leftpad (str, len, ch) {
-  //convert the `str` to String
-  str = str +'';
+function leftPad (str, len, ch) {
+  // convert `str` to `string`
+  str = str + '';
 
-  //needn't to pad
+  // doesn't need to pad
   len = len - str.length;
   if (len <= 0) return str;
 
-  //convert the `ch` to String
+  // convert `ch` to `string`
   if (!ch && ch !== 0) ch = ' ';
   ch = ch + '';
   if(ch === ' ' && len < 10) return cache[len] + str;

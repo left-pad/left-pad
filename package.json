@@ -17,7 +17,8 @@
     "left",
     "pad",
     "padding",
-    "string"
+    "string",
+    "repeat"
   ],
   "repository": {
     "url": "git@github.com:stevemao/left-pad.git",
