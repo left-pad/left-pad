@@ -9,7 +9,6 @@
   },
   "devDependencies": {
     "benchmark": "^2.1.0",
-    "microtime": "^2.0.0",
     "tape": "*"
   },
   "keywords": [

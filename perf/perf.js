@@ -1,38 +1,36 @@
 'use strict';
-
-
-var leftpadOriginal = require('./original');
-var leftpadEs6Repeat = require('./es6Repeat');
-var leftpadBitOps = require('../');
+var oN = require('./O(n)');
+var es6Repeat = require('./es6Repeat');
+var current = require('../');
 
 var Benchmark = require('benchmark');
 
 var str = "abcd"
 var len = 100;
 
-function buildSuite (note, methods, parameters) {
+function buildSuite (note, fns, args) {
   console.log(note);
-  var newSuite = new Benchmark.Suite;
+  var suite = new Benchmark.Suite;
 
-  Object.keys(methods).forEach(function (name) {
-    newSuite.add(name, function () {
-      methods[name].apply(null, parameters);
+  Object.keys(fns).forEach(function (name) {
+    suite.add(name, function () {
+      fns[name].apply(null, args);
     });
   });
-  newSuite.on('cycle', function (event) {
+  suite.on('cycle', function (event) {
     console.log(String(event.target));
   }).on('complete', function () {
     console.log('Fastest is ' + this.filter('fastest').map('name'));
   });
 
-  return newSuite;
+  return suite;
 }
 
-var methods = {
-  'Long - Original': leftpadOriginal,
-  'Long - ES6 Repeat': leftpadEs6Repeat,
-  'Long - Bit Operation': leftpadBitOps
+var fns = {
+  'O(n)': oN,
+  'ES6 Repeat': es6Repeat,
+  'Current': current
 };
 
-buildSuite('-> len = 100', methods, ['abcd', 100, ' ']).run();
-buildSuite('-> len = 10', methods, ['abcd', 10,  ' ']).run();
+buildSuite('-> len = 100', fns, ['abcd', 100, ' ']).run();
+buildSuite('-> len = 10', fns, ['abcd', 10,  ' ']).run();
