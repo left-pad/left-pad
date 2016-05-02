@@ -25,7 +25,7 @@ function leftPad (str, len, ch) {
   // convert `ch` to `string`
   if (!ch && ch !== 0) ch = ' ';
   ch = ch + '';
-  if(ch === ' ' && len < 10) return cache[len] + str;
+  if (ch === ' ' && len < 10) return cache[len] + str;
   var pad = '';
   while (true) {
     if (len & 1) pad += ch;
