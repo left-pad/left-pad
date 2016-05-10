@@ -16,7 +16,7 @@ var cache = [
 
 function leftPad (str, len, ch) {
   // convert `str` to `string`
-  str = str + '';
+  str = str.toString();
 
   // doesn't need to pad
   len = len - str.length;
