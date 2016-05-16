@@ -25,6 +25,9 @@ leftPad('foobar', 6)
 
 leftPad(1, 2, 0)
 // => "01"
+
+leftPad(17, 5, 0)
+// => "00017"
 ```
 
 [travis-image]: https://travis-ci.org/stevemao/left-pad.svg?branch=master
