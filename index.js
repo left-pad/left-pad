@@ -1,6 +1,19 @@
 'use strict';
 module.exports = leftPad;
 
+var cache = [
+  '',
+  ' ',
+  '  ',
+  '   ',
+  '    ',
+  '     ',
+  '      ',
+  '       ',
+  '        ',
+  '         '
+];
+
 function leftPad (str, len, ch) {
   // convert `str` to `string`
   str = str + '';
@@ -10,6 +23,7 @@ function leftPad (str, len, ch) {
   if (len <= 0) return str;
 
   ch = typeof ch === "undefined"?" ":ch+"";
+  if (ch === ' ' && len < 10) return cache[len] + str;
   var pad = '';
 
   while (true) {
