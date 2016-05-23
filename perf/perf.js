@@ -1,6 +1,7 @@
 'use strict';
 var oN = require('./O(n)');
 var es6Repeat = require('./es6Repeat');
+var steveMao = require('./steveMao');
 var current = require('../');
 
 var Benchmark = require('benchmark');
@@ -29,8 +30,9 @@ function buildSuite (note, fns, args) {
 var fns = {
   'O(n)': oN,
   'ES6 Repeat': es6Repeat,
+  'steveMao':steveMao,
   'Current': current
 };
 
-buildSuite('-> len = 100', fns, ['abcd', 100, ' ']).run();
-buildSuite('-> len = 10', fns, ['abcd', 10,  ' ']).run();
+buildSuite('-> len = 100', fns, ['abcd', 100, '|']).run();
+buildSuite('-> len = 10', fns, ['abcd', 10,  '|']).run();
