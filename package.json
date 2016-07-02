@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "node test",
+    "prepublish": "npm test",
     "bench": "node perf/perf.js"
   },
   "devDependencies": {
     "benchmark": "^2.1.0",
     "tape": "*"
   },
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "leftpad",
     "left",
