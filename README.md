@@ -2,7 +2,7 @@
 
 String left pad
 
-We are now using O(log(n)) algorithm.
+Time complexity: **O(log(n))**
 
 [![Build Status][travis-image]][travis-url]
 
