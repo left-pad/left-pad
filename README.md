@@ -15,7 +15,7 @@ $ npm install left-pad
 ## Usage
 
 ```js
-leftPad = require('left-pad')
+const leftPad = require('left-pad')
 
 leftPad('foo', 5)
 // => "  foo"
