@@ -9,9 +9,5 @@ module.exports = function (str, len, ch) {
   if (!ch && ch !== 0) ch = ' ';
   ch = ch + '';
 
-  if (len > 0) {
-    return ch.repeat(len) + str;
-  }
-
-  return str;
+  return ch.repeat(len) + str;
 };
