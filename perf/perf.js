@@ -32,5 +32,9 @@ var fns = {
   'Current': current
 };
 
-buildSuite('-> len = 100', fns, ['abcd', 100, ' ']).run();
-buildSuite('-> len = 10', fns, ['abcd', 10,  ' ']).run();
+buildSuite('-> pad 100 spaces to str of len 4', fns, ['abcd', 104, ' ']).run();
+buildSuite('-> pad 10 spaces to str of len 4', fns, ['abcd', 14,  ' ']).run();
+buildSuite('-> pad 9 spaces to str of len 4', fns, ['abcd', 13,  ' ']).run();
+buildSuite('-> pad 100 to str of len 100', fns, ['0012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789123456789', 200, ' ']).run();
+buildSuite('-> pad 10 to str of len 100', fns, ['0012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789123456789', 110, ' ']).run();
+buildSuite('-> pad 9 to str of len 100', fns, ['0012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789123456789', 109, ' ']).run();
