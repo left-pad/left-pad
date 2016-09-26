@@ -16,8 +16,6 @@ test('edge cases', function (assert) {
   assert.strictEqual(leftPad('foobar', -1, '1'), 'foobar');
   assert.strictEqual(leftPad('foobar', 8, ''), '  foobar');
   assert.strictEqual(leftPad('foobar', 8, false), '  foobar', 'false default to space');
-  //assert.strictEqual(leftPad('foobar', 8, []), '  foobar', '[] default to space');
-  //assert.strictEqual(leftPad('foobar', 8, {}), '  foobar', '{} default to space');
   assert.strictEqual(leftPad('foobar', 8, 0), '00foobar', '0 is treated as 0');
   assert.strictEqual(leftPad(0, 3, 1), '110', 'integer for str is converted to string');
   assert.strictEqual(leftPad(true, 7), '   true', 'boolean for str is converted to string');
