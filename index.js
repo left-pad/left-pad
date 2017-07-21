@@ -28,7 +28,7 @@ function leftPad (str, len, ch) {
   if (len <= 0) return str;
   // `ch` defaults to `' '`
   if (!ch && ch !== 0) ch = ' ';
-  // convert `ch` to `string`
+  // convert `ch` to `string` cuz it could be a number
   ch = ch + '';
   // cache common use cases
   if (ch === ' ' && len < 10) return cache[len] + str;
