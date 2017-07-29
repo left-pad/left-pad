@@ -7,7 +7,7 @@ var leftPad = require("./");
 var test = require("tape");
 
 test('edge cases', function (assert) {
-  assert.plan(12);
+  assert.plan(13);
   assert.strictEqual(leftPad('foobar', 6), 'foobar');
   assert.strictEqual(leftPad('foobar', 5), 'foobar');
   assert.strictEqual(leftPad('foobar', -1), 'foobar');
@@ -20,6 +20,7 @@ test('edge cases', function (assert) {
   assert.strictEqual(leftPad(0, 3, 1), '110', 'integer for str is converted to string');
   assert.strictEqual(leftPad(true, 7), '   true', 'boolean for str is converted to string');
   assert.strictEqual(leftPad('', 2), '  ', 'empty str for str');
+  assert.strictEqual(leftPad(NaN, 5), '  NaN', 'NaN for str is converted to string');
 });
 
 test('spaces for ch', function (assert) {
