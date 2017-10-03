@@ -6,7 +6,16 @@
 'use strict';
 module.exports = leftPad;
 
-var cache = [
+var cacheZeros = [
+  '',
+  '0',
+  '00',
+  '000',
+  '0000',
+  '00000'
+];
+
+var cacheSpaces = [
   '',
   ' ',
   '  ',
@@ -31,7 +40,8 @@ function leftPad (str, len, ch) {
   // convert `ch` to a `string` cuz it could be a number
   ch = ch + '';
   // cache common use cases
-  if (ch === ' ' && len < 10) return cache[len] + str;
+  if (ch === ' ' && len < 10) return cacheSpaces[len] + str;
+  if (ch === '0' && len < 6) return cacheZeros[len] + str;
   // `pad` starts with an empty string
   var pad = '';
   // loop
