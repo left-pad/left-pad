@@ -2,8 +2,6 @@
 
 String left pad
 
-Time complexity: **O(log(n))**
-
 [![Build Status][travis-image]][travis-url]
 
 ## Install
