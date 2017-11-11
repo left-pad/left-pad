@@ -32,3 +32,7 @@ leftPad(17, 5, 0)
 
 [travis-image]: https://travis-ci.org/stevemao/left-pad.svg?branch=master
 [travis-url]: https://travis-ci.org/stevemao/left-pad
+
+## Typings
+
+Typings copied from [@types/left-pad](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/left-pad) for convenience.
