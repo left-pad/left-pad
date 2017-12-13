@@ -35,4 +35,4 @@ leftPad(17, 5, 0)
 
 ## Typings
 
-Typings copied from [@types/left-pad](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/left-pad) for convenience.
+Typings copied from [DefinitelyTyped](https://github.com/DefinitelyTyped) defined by [Zlatko Andonovski](https://github.com/Goldsmith42) for convenience.
