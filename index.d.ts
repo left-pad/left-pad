@@ -4,4 +4,4 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 declare function leftPad(str: string|number, len: number, ch?: string|number): string;
 
-export = leftPad;
+export default leftPad;
