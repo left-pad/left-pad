@@ -5,6 +5,7 @@
      * http://www.wtfpl.net/ for more details. */
 var leftPad = require("./");
 var test = require("tape");
+var fc = require("fast-check");
 
 test('edge cases', function (assert) {
   assert.plan(12);
@@ -49,4 +50,39 @@ test('non spaces for ch', function (assert) {
   assert.strictEqual(leftPad('foo', 6, '*'), '***foo', '0b11 len');
   assert.strictEqual(leftPad('foo', 7, '*'), '****foo', '0b001 len');
   assert.strictEqual(leftPad('foo', 103, '*'), '****************************************************************************************************foo', '100 pad');
+});
+
+var runProperty = function(assert, name, checkFn) {
+  var prop = fc.property(fc.string(), fc.nat(1000), fc.char(), checkFn);
+  var result = fc.check(prop);
+  var message = '';
+  if (result.failed) {
+    message = 'Property "' + name + '" failed on counterexample ' + JSON.stringify(result.counterexample) + ' (seed: ' + result.seed + ')';
+  }
+  assert.strictEqual(message, '', name);
+};
+
+test('properties', function (assert) {
+  assert.plan(4);
+  runProperty(assert, 'starts by ch', function(str, len, ch) {
+      var beg = leftPad(str, len, ch).substr(0, len -str.length);
+      for (var idx = 0 ; idx != beg.length ; ++idx)
+        if (beg[idx] !== ch)
+          return false;
+      return true;
+  });
+  runProperty(assert, 'ends by str', function(str, len, ch) {
+      var out = leftPad(str, len, ch);
+      for (var idx = 0 ; idx != str.length ; ++idx)
+        if (str[str.length -idx -1] !== out[out.length -idx -1])
+          return false;
+      return true;
+  });
+  runProperty(assert, 'len char long if padded (unchanged otherwise)', function(str, len, ch) {
+      var out = leftPad(str, len, ch);
+      return str.length < len ? out.length === len : str === out;
+  });
+  runProperty(assert, 'no ch equivalent to space', function(str, len) {
+      return leftPad(str, len) === leftPad(str, len, ' ');
+  });
 });
