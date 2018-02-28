@@ -6,26 +6,15 @@
 'use strict';
 module.exports = leftPad;
 
-var cache = [
-    '',
-    ' ',
-    '  ',
-    '   ',
-    '    ',
-    '     ',
-    '      ',
-    '       ',
-    '        ',
-    '         ',
-    '          ',
-    '           ',
-    '            ',
-    '             ',
-    '              ',
-    '               ',
-    '                ',
-    '                 ',
-];
+// Generate cache. Strings are UTF16 in JavaScript,
+// so this will be (1 + 2 + … + 32) = 528*2 bytes,
+// or about 1KiB of cache per array (plus a little
+// bit extra overhead). 
+// Probably not a significant amount.
+var cache = ['',' '];
+for (var i = 2; i <= 32; i++){
+  cache.push(cache[i-1]+' ');
+}
 
 function leftPad (str, len, ch) {
   // initialise `pad` as string early - more monomorphic and helps with str coercion
@@ -43,14 +32,14 @@ function leftPad (str, len, ch) {
   else ch = ch + pad; 
   // common use cases
   if (ch === ' ') {
-    // if less than 16 we have a ready-made padding
-    if (len < 16) return cache[len] + str;
+    // if less or equal to 32 we have a ready-made padding
+    if (len <= 32) return cache[len] + str;
     // initialise pad at correct size and
-    // skip the first four iterations
+    // skip the first five iterations
     // of the loop below
-    pad = cache[len & 15];
-    len >>= 4;
-    ch = '                ';
+    pad = cache[len & 31];
+    len >>= 5;
+    ch = cache[32];
   }
   while (true) {
     // add `ch` to `pad` if `len` is odd
