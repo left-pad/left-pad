@@ -7,45 +7,65 @@
 module.exports = leftPad;
 
 var cache = [
-  '',
-  ' ',
-  '  ',
-  '   ',
-  '    ',
-  '     ',
-  '      ',
-  '       ',
-  '        ',
-  '         '
+    '',
+    ' ',
+    '  ',
+    '   ',
+    '    ',
+    '     ',
+    '      ',
+    '       ',
+    '        ',
+    '         ',
+    '          ',
+    '           ',
+    '            ',
+    '             ',
+    '              ',
+    '               ',
+    '                ',
+    '                 ',
 ];
 
 function leftPad (str, len, ch) {
-  // convert `str` to a `string`
-  str = str + '';
+  // initialise `pad` as string early - more monomorphic and helps with str coercion
+  var pad = '';
+  // convert `str` to a `string` via type coercion
+  str = str + pad;
   // `len` is the `pad`'s length now
   len = len - str.length;
   // doesn't need to pad
   if (len <= 0) return str;
-  // `ch` defaults to `' '`
+  // `ch` defaults to `' '` otherwise
+  // convert `ch` to a `string` since 
+  // it could be a number
   if (!ch && ch !== 0) ch = ' ';
-  // convert `ch` to a `string` cuz it could be a number
-  ch = ch + '';
-  // cache common use cases
-  if (ch === ' ' && len < 10) return cache[len] + str;
-  // `pad` starts with an empty string
-  var pad = '';
-  // loop
+  else ch = ch + pad; 
+  // common use cases
+  if (ch === ' ') {
+    // if less than 16 we have a ready-made padding
+    if (len < 16) return cache[len] + str;
+    // initialise pad at correct size and
+    // skip the first four iterations
+    // of the loop below
+    pad = cache[len & 15];
+    len >>= 4;
+    ch = '                ';
+  }
   while (true) {
     // add `ch` to `pad` if `len` is odd
-    if (len & 1) pad += ch;
+    if (len & 1) pad = ch + pad;
     // divide `len` by 2, ditch the remainder
-    len >>= 1;
-    // "double" the `ch` so this operation count grows logarithmically on `len`
-    // each time `ch` is "doubled", the `len` would need to be "doubled" too
-    // similar to finding a value in binary search tree, hence O(log(n))
-    if (len) ch += ch;
-    // `len` is 0, exit the loop
-    else break;
+    if (len >>= 1) {
+      // "double" the `ch` so this operation count grows logarithmically on `len`
+      // each time `ch` is "doubled", the `len` would need to be "doubled" too
+      // similar to finding a value in binary search tree, hence O(log(n))
+      ch += ch;
+      // only reached is `len` is not zero, so we can restart loop early
+      continue;
+    }
+    // only reached if `len` is zero, after which we exit the loop
+    break;
   }
   // pad `str`!
   return pad + str;
