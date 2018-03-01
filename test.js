@@ -23,8 +23,22 @@ test('edge cases', function (assert) {
   assert.strictEqual(leftPad('', 2), '  ', 'empty str for str');
 });
 
+  var str10 = '          '; // 10 spaces
+  var str100 = str10 + str10; // 20
+  str100 += str100; // 40
+  str100 += str100; // 80
+  str100 += str10 + str10; // 100
+  var str1000 = str100 + str100; // 200
+  str1000 += str1000; // 400
+  str1000 += str1000; // 800
+  str1000 += str100 + str100; // 1000
+  var str10000 = str1000 + str1000; // 2000
+  str10000 += str10000; // 4000
+  str10000 += str10000; // 8000
+  str10000 += str1000 + str1000; // 10000
+
 test('spaces for ch', function (assert) {
-  assert.plan(12);
+  assert.plan(18);
   // default to space if not specified
   assert.strictEqual(leftPad('foo', 2), 'foo');
   assert.strictEqual(leftPad('foo', 3), 'foo');
@@ -32,6 +46,9 @@ test('spaces for ch', function (assert) {
   assert.strictEqual(leftPad('foo', 5), '  foo');
   assert.strictEqual(leftPad('foo', 12), '         foo');
   assert.strictEqual(leftPad('foo', 13), '          foo');
+  assert.strictEqual(leftPad('foo', 103), str100 + 'foo');
+  assert.strictEqual(leftPad('foo', 1003), str1000 + 'foo');
+  assert.strictEqual(leftPad('foo', 10003), str10000 + 'foo');
   // explicit space param
   assert.strictEqual(leftPad('foo', 2, ' '), 'foo');
   assert.strictEqual(leftPad('foo', 3, ' '), 'foo');
@@ -39,6 +56,9 @@ test('spaces for ch', function (assert) {
   assert.strictEqual(leftPad('foo', 5, ' '), '  foo');
   assert.strictEqual(leftPad('foo', 12, ' '), '         foo');
   assert.strictEqual(leftPad('foo', 13, ' '), '          foo');
+  assert.strictEqual(leftPad('foo', 103, ' '), str100 + 'foo');
+  assert.strictEqual(leftPad('foo', 1003, ' '), str1000 + 'foo');
+  assert.strictEqual(leftPad('foo', 10003, ' '), str10000 + 'foo');
 });
 
 test('non spaces for ch', function (assert) {
