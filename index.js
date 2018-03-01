@@ -28,14 +28,11 @@ function leftPad (str, len, ch) {
   if (str += '', len -= str.length, len <= 0) return str;
   // `ch` defaults to `' '`, otherwise coerce it
   // to a `string` since it could be a number
-  if (!ch && ch === 0) ch += '';
-  else ch = ' '; 
+  if (!ch && ch !== 0) ch = ' ';
+  else ch += ''; 
   // common use cases
   var pad = '';
   if (ch === ' ') {
-    // Skip loop entirely when len <= 32.
-    // Note: at this point `len` must be
-    // greater than zero, so `len-1` is safe.
     pad = c[len-1 & 31];
     if (len <= 32) return pad + str;
     // `pad` already contains the result of
