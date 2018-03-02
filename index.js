@@ -39,13 +39,13 @@ function leftPad (str, len, ch) {
     // `ch` is set to 32 spaces to accomodate this.
     ch = '                                ';
     len >>= 5;
-  } else if ((ch+= '') === '0'){
+  } else if (ch === 0 || ch === '0'){
     // padding by zero is another really common use-case
     pad = c0[len-1 & 31];
     if (len <= 32) return pad + str;
     ch = '00000000000000000000000000000000';
     len >>= 5;
-  }
+  } else ch += '';
   // `len` must be non-zero at this point, and the
   // last loop iteration is guaranteed to be one,
   // meaning we can skip testing for it entirely.
