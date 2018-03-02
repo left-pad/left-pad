@@ -8,7 +8,7 @@ var test = require("tape");
 var fc = require("fast-check");
 
 test('edge cases', function (assert) {
-  assert.plan(12);
+  assert.plan(20);
   assert.strictEqual(leftPad('foobar', 6), 'foobar');
   assert.strictEqual(leftPad('foobar', 5), 'foobar');
   assert.strictEqual(leftPad('foobar', -1), 'foobar');
@@ -16,8 +16,15 @@ test('edge cases', function (assert) {
   assert.strictEqual(leftPad('foobar', 5, '1'), 'foobar');
   assert.strictEqual(leftPad('foobar', -1, '1'), 'foobar');
   assert.strictEqual(leftPad('foobar', 8, ''), '  foobar');
+  assert.strictEqual(leftPad('foobar', 8, []), 'foobar', 'passing [] for ch pads with nothing');
   assert.strictEqual(leftPad('foobar', 8, false), '  foobar', 'false default to space');
+  assert.strictEqual(leftPad('foobar', 8, 'false'), 'falsefalsefoobar', '"false" pads with "false"');
+  assert.strictEqual(leftPad('foobar', 8, undefined), '  foobar', 'undefined default to space');
+  assert.strictEqual(leftPad('foobar', 8, 'undefined'), 'undefinedundefinedfoobar', '"undefined" pads with "undefined"');
+  assert.strictEqual(leftPad('foobar', 8, null), '  foobar', 'null default to space');
+  assert.strictEqual(leftPad('foobar', 8, 'null'), 'nullnullfoobar', '"null" pads with "null"');
   assert.strictEqual(leftPad('foobar', 8, 0), '00foobar', '0 is treated as 0');
+  assert.strictEqual(leftPad('foobar', 8, "0"), '00foobar', '"0" is treated as "0"');
   assert.strictEqual(leftPad(0, 3, 1), '110', 'integer for str is converted to string');
   assert.strictEqual(leftPad(true, 7), '   true', 'boolean for str is converted to string');
   assert.strictEqual(leftPad('', 2), '  ', 'empty str for str');
