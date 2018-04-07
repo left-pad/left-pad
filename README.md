@@ -34,7 +34,3 @@ leftPad(17, 5, 0)
 
 [travis-image]: https://travis-ci.org/stevemao/left-pad.svg?branch=master
 [travis-url]: https://travis-ci.org/stevemao/left-pad
-
-## Typings
-
-Typings copied from [DefinitelyTyped](https://github.com/DefinitelyTyped) defined by [Zlatko Andonovski](https://github.com/Goldsmith42) for convenience.
