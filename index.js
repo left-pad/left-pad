@@ -1,5 +1,5 @@
 'use strict';
-module.exports = leftPad;
+module.exports = (typeof ''.padStart === 'function') ? ecmaPadStart : leftPad;
 
 var cache = [
   '',
@@ -44,4 +44,11 @@ function leftPad (str, len, ch) {
   }
   // pad `str`!
   return pad + str;
+}
+
+function ecmaPadStart (str, len, ch) {
+  str = str + '';
+  if (len <= str.length) return str;
+  if (!ch && ch !== 0) ch = ' ';
+  return str.padStart(len, ch);
 }

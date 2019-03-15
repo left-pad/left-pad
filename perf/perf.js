@@ -1,6 +1,7 @@
 'use strict';
 var oN = require('./O(n)');
 var es6Repeat = require('./es6Repeat');
+var ecmaPadStart = require('./ecmaPadStart');
 var current = require('../');
 
 var Benchmark = require('benchmark');
@@ -29,6 +30,7 @@ function buildSuite (note, fns, args) {
 var fns = {
   'O(n)': oN,
   'ES6 Repeat': es6Repeat,
+  'ECMA-262 string.padStart' : ecmaPadStart,
   'Current': current
 };
 
