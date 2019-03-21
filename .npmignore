@@ -1,1 +1,5 @@
+.travis.yml
+COPYING
+README.md
 perf
+test.js
