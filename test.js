@@ -3,7 +3,7 @@ var test = require("tape");
 var fc = require("fast-check");
 
 test('edge cases', function (assert) {
-  assert.plan(12);
+  assert.plan(14);
   assert.strictEqual(leftPad('foobar', 6), 'foobar');
   assert.strictEqual(leftPad('foobar', 5), 'foobar');
   assert.strictEqual(leftPad('foobar', -1), 'foobar');
@@ -16,6 +16,8 @@ test('edge cases', function (assert) {
   assert.strictEqual(leftPad(0, 3, 1), '110', 'integer for str is converted to string');
   assert.strictEqual(leftPad(true, 7), '   true', 'boolean for str is converted to string');
   assert.strictEqual(leftPad('', 2), '  ', 'empty str for str');
+  assert.strictEqual(leftPad("foobar", 20.5), '              foobar', "non-integer length, long length");
+  assert.strictEqual(leftPad("foobar", 10.5), '    foobar', "non-integer length, short length");
 });
 
 test('spaces for ch', function (assert) {
